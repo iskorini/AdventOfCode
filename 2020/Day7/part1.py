@@ -12,15 +12,15 @@ def generate_dict(input):
         d[line[0].replace(' ', '')] = content
     return d
 
-def porca_madonna(d, key):
+def delete_from_bag(d, key):
     try:
         for bag in d[key]:
-            porca_madonna(d, bag)
+            delete_from_bag(d, bag)
         d.pop(key, None)
     except KeyError:
         pass
 
-def gesu_cretino(key, d):
+def visit_bag(key, d):
     try:
         bag_content = d[key]
         if COLOR in bag_content:
@@ -30,7 +30,7 @@ def gesu_cretino(key, d):
             return 0
         i = len(bag_content)
         for bag in bag_content:
-            if gesu_cretino(bag, d) == 0:
+            if visit_bag(bag, d) == 0:
                 i = i-1
         if i <= 0:
             d.pop(key, None)
@@ -38,11 +38,11 @@ def gesu_cretino(key, d):
     except KeyError:
         return 0
 
-def dio_rotto(d):
+def delete_unrelated(d):
     try:
         bags = list(d.keys())
         for bag in bags:
-            if gesu_cretino(bag, d) == 0:
+            if visit_bag(bag, d) == 0:
                 d.pop(bag, None)
     except KeyError:
         pass
@@ -54,6 +54,6 @@ if __name__ == '__main__':
     input = input.replace('bags', 'bag').replace('bag', '').replace('.', '')
     input = input.splitlines()
     d = generate_dict(input)
-    porca_madonna(d, COLOR)
-    dio_rotto(d)
+    delete_from_bag(d, COLOR)
+    delete_unrelated(d)
     print(len(d.keys()))
