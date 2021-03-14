@@ -54,6 +54,6 @@ if __name__ == '__main__':
     input = input.replace('bags', 'bag').replace('bag', '').replace('.', '')
     input = input.splitlines()
     d = generate_dict(input)
-    delete_from_bag(d, COLOR)
+    #delete_from_bag(d, COLOR)
     delete_unrelated(d)
     print(len(d.keys()))
