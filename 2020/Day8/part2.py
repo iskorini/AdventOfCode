@@ -1,13 +1,14 @@
-def execute_boot(input, max_iteration = 100):
+def execute_boot(input):
     ptr = 0
     acc = 0
     iteration = 0
+    counter = {} 
     while ptr < len(input):
         istr = input[ptr].split(' ')
-        acc, ptr = handle_istruction(istr, acc, ptr)
-        iteration+=1
-        if iteration == max_iteration:
+        counter[ptr] = 1 + counter.get(ptr, 0)
+        if counter[ptr] > 1:
             return None
+        acc, ptr = handle_istruction(istr, acc, ptr)
     return acc 
 
 def handle_istruction(istr, acc, ptr):
