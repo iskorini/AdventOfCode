@@ -1,4 +1,3 @@
-from math import cos, sin
 def navigate(commands, start_coordinates=[0, 0], waypoint_start_position = (-10, 1)):
     coordinates = start_coordinates
     waypoint_position = waypoint_start_position
