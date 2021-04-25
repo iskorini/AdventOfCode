@@ -6,10 +6,10 @@ def handle_mem(input):
     for line in input:
         if 'mask' in line:
             actual_mask = line[7:]
+            mask = [(v, index) for index, v in enumerate(actual_mask) if v != '0']
         elif 'mem' in line:
             data = int(line.split()[-1])
             address = list(format(int(line.split()[0][4:-1]), 'b').zfill(36))
-            mask = [(v, index) for index, v in enumerate(actual_mask) if v != '0']
             for m in mask:
                 address[m[1]] = m[0]
             for p in product('01', repeat=actual_mask.count('X')):
