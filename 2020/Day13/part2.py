@@ -5,7 +5,7 @@ def find_schedule(input):
     Ai = [a[0]-a[1] for a in input]
     Ni = [N//x for x in map(lambda x: x[0], input)]
     Yi = [pow(N, -1, n) for N, n in zip(Ni, map(lambda x: x[0], input))] # only for python >= 3.8
-    return sum([a*N*y for a, N, y in zip(Ai, Ni, Yi)]) % N
+    return sum([a*n*y for a, n, y in zip(Ai, Ni, Yi)]) % N
 
 
 if __name__ == '__main__':
