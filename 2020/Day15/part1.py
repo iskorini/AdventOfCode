@@ -1,6 +1,3 @@
-from os import lseek
-
-
 def game(input, turns=2021):
     memory = {}
     for index, i in enumerate(input[:-1]):
